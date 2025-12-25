@@ -1,23 +1,46 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        L,R=0,1
-        count = k
-        max_len = 1
+        # l = r = res = 0
+        # hashmap = dict()
 
-        while R<len(s):
-            if s[L] != s[R]:
-                if count == 0:
-                    max_len = max(max_len,R-L)
-                    L+=1
-                    R=L
-                    count = k
-                else:
-                    count -= 1
-            
-            R+=1
+        # for r in range(len(s)):
+        #     if s[r] in hashmap:
+        #         hashmap[s[r]] += 1
+        #     else:
+        #         hashmap[s[r]] = 1
 
-        return max_len
+        #     window_len = (r-l)+1
+        #     most_freq = max(hashmap.values())
+        #     count = window_len - most_freq
+
+        #     if count <= k:
+        #         res = max(res,window_len)
+        #     else:
+        #         hashmap[s[l]] -= 1
+        #         l+=1         
+        # return res
+
+        l = r = res = 0
+        hashmap = dict()
+        max_f = 1
+
+        for r in range(len(s)):
+            if s[r] in hashmap:
+                hashmap[s[r]] += 1
+                max_f = max(max_f,hashmap[s[r]])
+            else:
+                hashmap[s[r]] = 1
+
+            window_len = (r-l)+1
+            count = window_len - max_f
+
+            if count <= k:
+                res = max(res,window_len)
+            else:
+                hashmap[s[l]] -= 1
+                l+=1       
+        return res
 
 if __name__== "__main__":
     sol = Solution()
-    print(sol.characterReplacement(s="ABAB",k=2))
+    print(sol.characterReplacement(s="AABABBA",k=1))
