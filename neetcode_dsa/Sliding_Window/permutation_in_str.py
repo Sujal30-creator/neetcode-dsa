@@ -1,5 +1,9 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
+
+        if len(s1) > len(s2):
+            return False
+        
         count = dict()
         for i in s1:
             if i in count:
@@ -7,10 +11,30 @@ class Solution:
             else:
                 count[i] = 1
 
-        count = dict(sorted(count.items()))
 
+        L = R = 0
+        EP = len(s1) - 1
+        hashmap = dict()
 
-        
+        for R in range(len(s2)):
+
+            if s2[R] in hashmap:
+                hashmap[s2[R]] += 1
+            else:
+                hashmap[s2[R]] = 1
+
+            if EP == R :
+
+                if hashmap == count :
+                    return True
+                EP += 1
+                hashmap[s2[L]] -= 1
+                if hashmap[s2[L]] == 0:
+                    del hashmap[s2[L]]
+                L+=1
+            
+        return False
+
 
         # l= 0
         # r = l + len(s1)-1
