@@ -1,5 +1,6 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
+        #O(26.n)
         # l = r = res = 0
         # hashmap = dict()
 
@@ -20,6 +21,7 @@ class Solution:
         #         l+=1         
         # return res
 
+        #O(n)
         l = r = res = 0
         hashmap = dict()
         max_f = 1
