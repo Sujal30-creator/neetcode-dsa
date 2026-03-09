@@ -2,7 +2,7 @@ class Solution:
     def subarraySum(self, nums: list[int], k: int) -> int:
         i,j = 1, 0
         count = 0
-        while j == len(nums):
+        while j < len(nums):
             if sum(nums[j:i]) == k:
                 print(f'Summed up array: {nums[j:i]} and sum is {sum(nums[j:i])}')
                 count += 1
