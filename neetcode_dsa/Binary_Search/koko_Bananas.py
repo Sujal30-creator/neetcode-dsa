@@ -8,7 +8,6 @@ class Solution:
             middle = (start+end) // 2
             total_hours=0
             
-            
             for pile in piles:
                 total_hours += math.ceil(pile / middle)
             

@@ -1,0 +1,19 @@
+class Solution:
+    def searchInsert(self, nums: list[int], target: int) -> int:
+        start, end = 0, len(nums)-1
+
+        while start <= end:
+            middle = (start+end) // 2
+
+            if (nums[middle] == target):
+                return middle
+            elif (nums[middle] > target):
+                end = middle-1
+            else:
+                start = middle+1
+
+        return start
+    
+if __name__=="__main__":
+    sol = Solution()
+    print(sol.searchInsert(nums=[-1,0,2,4,6,8],target=10))
