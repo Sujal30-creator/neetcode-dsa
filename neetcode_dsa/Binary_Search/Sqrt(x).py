@@ -14,8 +14,7 @@ class Solution:
             elif (val<middle):
                 end = middle-1
             else:
-                start = middle+1
-            
+                start = middle+1    
         return start-1
 
 if __name__=="__main__":
