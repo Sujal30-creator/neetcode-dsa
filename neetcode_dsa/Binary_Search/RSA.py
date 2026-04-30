@@ -22,4 +22,4 @@ class Solution:
 
 if __name__=="__main__":
     sol = Solution()
-    print(sol.search(nums=[5,1,3],target=5))
+    print(sol.search(nums=[3,5,6,0,1,2],target=4))
