@@ -1,12 +1,30 @@
 class Solution:
     def shipWithinDays(self, weights: list[int], days: int) -> int:
-        if len(weights) >= days:
-            return days
-        
+        start, end = max(weights), sum(weights)
+        ans = max(weights)
 
+        def isValid(capacity):
+            days_used = 1
+            current_sum = 0
 
-        pass
+            for w in weights:
+                if current_sum + w > capacity:
+                    days_used += 1
+                    current_sum = w
+                else:
+                    current_sum += w
+
+            return days_used <= days
+
+        while start<=end:
+            middle = (start+end) // 2
+            if isValid(middle):
+                ans = middle
+                end = middle-1
+            else:
+                start = middle+1
+        return ans
 
 if __name__=="__main__":
     sol = Solution()
-    print(sol.shipWithinDays(weights=[1,2,3,4,5,6,7,8,9,10], days=5))
+    print(sol.shipWithinDays(weights=[3,2,2,4,1,4], days=3))
