@@ -36,7 +36,7 @@ class Solution:
             curr = curr.next
             counter += 1
 
-        end.next = None, None
+        end.next = None
 
         new_head = self.revList(start)
         
