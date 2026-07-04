@@ -1,32 +1,44 @@
 class Solution:
     def asteroidCollision(self, asteroids: list[int]) -> list[int]:
-        stack = list()
-        for asteroid in asteroids:
-            if stack:
-                val = stack[-1]
+        # stack = list()
+        # for asteroid in asteroids:
 
-                if val>0 and asteroid<0:
-                    #if asteroid is -ve and val is +ve ---> keep on poping the stack value until the val is greter than the asteroid value
-                    if val>0 and asteroid<0:
-                        if abs(val) == abs(asteroid):
-                            stack.pop()
-                            continue
-                        while stack and abs(asteroid) > abs(stack[-1]):
-                            stack.pop()
+        #     # Keep resolving collisions
+        #     while stack and stack[-1] > 0 and asteroid < 0:
 
-                            if stack and stack[-1] < 0:
-                                stack.append(asteroid)
-                                break
-                    
-                    if not stack:
-                            stack.append(asteroid)
-                else:
-                    stack.append(asteroid) 
+        #         # Top asteroid is smaller, so it explodes
+        #         if stack[-1] < abs(asteroid):
+        #             stack.pop()
+
+        #         # Both are equal, so both explode
+        #         elif stack[-1] == abs(asteroid):
+        #             stack.pop()
+        #             break
+
+        #         # Top asteroid is larger, current asteroid explodes
+        #         else:
+        #             break
+
+        #     else:
+        #         # Executed only if the while loop wasn't terminated by break
+        #         stack.append(asteroid)
+
+        # return stack
+
+        #Optimal solution
+        stack = []
+
+        for a in asteroids:
+            while stack and a<0<stack[-1]:
+                if stack[-1] < -a:
+                    stack.pop()
+                    continue
+                elif stack[-1] == -a:
+                    stack.pop()
+                break
             else:
-                stack.append(asteroid)
-
-            print(stack)
-        return stack
+                stack.append(a)
+        return stack  
 
 if __name__ == "__main__":
     sol = Solution()
