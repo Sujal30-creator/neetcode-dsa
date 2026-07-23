@@ -10,22 +10,24 @@ class Solution:
             else:
                 hashmap[nums[i]] = 1
 
-        i=0
+        j=0
 
-        for _ in range(hashmap.get(0,0)):
-            nums[i] = 0
-            i+=1
+        if hashmap.get(0,0):
+            for _ in range(hashmap.get(0,0)):
+                nums[j] = 0
+                j+=1
+        if hashmap.get(1,0):
+            for _ in range(hashmap.get(1,0)):
+                nums[j] = 1
+                j+=1
 
-        for _ in range(hashmap.get(1,0)):
-            nums[i] = 1
-            i+=1
-
-        for _ in range(hashmap.get(2,0)):
-            nums[i] = 2
-            i+=1
+        if hashmap.get(2,0):
+            for _ in range(hashmap.get(2,0)):
+                nums[j] = 2
+                j+=1
         print(nums)
             
 
 if __name__=="__main__":
     sol = Solution()
-    sol.sortColors(nums=[1,0,1,2])
+    sol.sortColors(nums=[1,1,2])

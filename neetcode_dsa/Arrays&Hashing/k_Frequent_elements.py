@@ -1,24 +1,12 @@
+from collections import Counter
+
 class Solution:
     def topKFrequent(self, nums: list[int], k: int) -> list[int]:
-        count = {}
-        for num in nums:
-            count[num] = 1 + count.get(num, 0)
-
-
-        print(count)
-        arr = []
-        for num, cnt in count.items():
-            arr.append([cnt, num])
-        arr.sort()
-
-        print(arr)
-        res = []
-        while len(res) < k:
-            res.append(arr.pop()[0])
-        return res
+        count = Counter(nums)
+        return [item for item,freq in count.most_common(k)]
 
 if __name__=='__main__':
     sol = Solution()
-    nums = [1,2,2,3,3,3]
+    nums = [1,2,1,2,1,2,3,1,3,2]
     k = 2
     print(sol.topKFrequent(nums, k))

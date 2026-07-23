@@ -8,6 +8,7 @@ class Solution:
             else:
                 hashmap[s[i]] = 1
             
+        for j in range(len(t)):
             if t[j] in hashmap:
                 hashmap[t[j]] -= 1
             else:
