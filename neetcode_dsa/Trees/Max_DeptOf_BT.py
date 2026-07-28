@@ -10,14 +10,15 @@ class TreeNode:
 
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        pass
+        if not root:
+            return 0
+        
+        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
 
 if __name__=="__main__":
-    root = build_tree([])
+    root = build_tree([1,2,3,None,None,4])
 
     sol = Solution()
     ans = sol.maxDepth(root)
 
-    vans = sol.inorderTraversal(ans)
-
-    print(vans)
+    print(ans)
