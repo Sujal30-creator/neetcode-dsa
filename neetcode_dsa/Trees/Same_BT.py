@@ -9,20 +9,20 @@ class TreeNode:
         self.right = right
 
 class Solution:
+    def traverse(self,node, sol: list):
+        if not node:
+            sol.append(None)
+            return
+        sol.append(node.val)
+        self.traverse(node.left, sol)
+        self.traverse(node.right, sol)
+
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         sol1 = list()
         sol2 = list()
-        
-        def traverse(node, sol: list):
-            if not node:
-                sol.append(None)
-                return
-            sol.append(node.val)
-            traverse(node.left, sol)
-            traverse(node.right, sol)
 
-        traverse(p,sol1)
-        traverse(q,sol2)
+        self.traverse(p,sol1)
+        self.traverse(q,sol2)
         
         if sol1 == sol2:
             return True
