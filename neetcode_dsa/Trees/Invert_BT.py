@@ -39,7 +39,7 @@ class Solution:
 
 
 if __name__=="__main__":
-    root = build_tree([])
+    root = build_tree([1,2,3,4,5,6,7])
 
     sol = Solution()
     ans = sol.invertTree(root)
